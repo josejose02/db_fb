@@ -5,6 +5,7 @@ CREATE TABLE `player` (
   `Last Name` varchar(255) NOT NULL,
   `Height` int(11) NOT NULL COMMENT 'in cm',
   `Weight` int(11) NOT NULL COMMENT 'in grams',
+  `Position` varchar(255) NOT NULL,
   `Experience` int(11) NOT NULL COMMENT 'Measured by the number of national and international matches played',
   `Team ID` int(11) NOT NULL,
   `Pro` varchar(5) NOT NULL,
