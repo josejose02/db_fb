@@ -2,18 +2,7 @@
 
 -- USE fb;
 
-CREATE TABLE "match" (
-  "ID" INTEGER NOT NULL PRIMARY KEY  ,
-  "Home ID" INTEGER NOT NULL,
-  "Away ID" INTEGER NOT NULL,
-  "Home Score" INTEGER NOT NULL,
-  "Away Score" INTEGER NOT NULL,
-  "Extra time" INTEGER NOT NULL,
-  "Penalties" INTEGER NOT NULL,
-  CONSTRAINT "Relation Match_Team_Home" FOREIGN KEY ("Home ID") REFERENCES "team" ("ID") ON DELETE CASCADE,
-  CONSTRAINT "Relation Match_Team_Away" FOREIGN KEY ("Away ID") REFERENCES "team" ("ID") ON DELETE CASCADE,
-  CONSTRAINT "Check Not Same Team" CHECK ("Home ID" <> "Away ID")
-);
+
 
 CREATE TABLE "player" (
   "ID" INTEGER NOT NULL PRIMARY KEY ,
@@ -54,6 +43,19 @@ CREATE TABLE "team" (
   "ID" INTEGER NOT NULL PRIMARY KEY  ,
   "Name" VARCHAR(255) NOT NULL,
   "Address" VARCHAR(255) NOT NULL -- Add TEAM ID. Maybe entry/exit???
+);
+
+CREATE TABLE "match" (
+  "ID" INTEGER NOT NULL PRIMARY KEY  ,
+  "Home ID" INTEGER NOT NULL,
+  "Away ID" INTEGER NOT NULL,
+  "Home Score" INTEGER NOT NULL,
+  "Away Score" INTEGER NOT NULL,
+  "Extra time" INTEGER NOT NULL,
+  "Penalties" INTEGER NOT NULL,
+  CONSTRAINT "Relation Match_Team_Home" FOREIGN KEY ("Home ID") REFERENCES "team" ("ID") ON DELETE CASCADE,
+  CONSTRAINT "Relation Match_Team_Away" FOREIGN KEY ("Away ID") REFERENCES "team" ("ID") ON DELETE CASCADE,
+  CONSTRAINT "Check Not Same Team" CHECK ("Home ID" <> "Away ID")
 );
 
 
