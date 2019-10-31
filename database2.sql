@@ -26,7 +26,7 @@ CREATE TABLE "player"
     "Middle Name"   VARCHAR(255)                                            NULL,
     "Last Name"     VARCHAR(255)                                            NOT NULL,
     "Height"        INTEGER                                                 NOT NULL,
-    "Weight"        DECIMAL(3, 2)                                           NOT NULL,
+    "Weight"        DECIMAL(7, 2)                                           NOT NULL,
     "Date of Birth" DATE                                                    NOT NULL,
     "Experience"    INTEGER                                                 NOT NULL,
     "Team ID"       INTEGER                                                 NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE "contract"
     "Team ID"   INTEGER                                                 NOT NULL,
     "Entry"     DATE DEFAULT CURRENT_DATE                               NOT NULL,
     "Exit"      DATE                                                    NOT NULL,
-    "Salary"    DECIMAL(10, 2)                                          NOT NULL,
+    "Salary"    DECIMAL(15, 2)                                          NOT NULL,
     CONSTRAINT "Relation Contract_Player" FOREIGN KEY ("Player ID") REFERENCES "player" ("ID") ON DELETE CASCADE,
     CONSTRAINT "Relation Contract_Team" FOREIGN KEY ("Team ID") REFERENCES "team" ("ID") ON DELETE CASCADE,
     CONSTRAINT "Check Dates" CHECK ( "Exit" >= "Entry" )
@@ -167,9 +167,4 @@ CREATE TABLE "player_performance"
     CONSTRAINT "Relation Performance_Match" FOREIGN KEY ("Match ID") REFERENCES "match" ("ID") ON DELETE CASCADE
 );
 
----
---- SQL for Views
----
 
-SELECT "First Name" || ', ' || "Last Name" AS "Name", "ID Number"
-FROM "Psychiatrist";
